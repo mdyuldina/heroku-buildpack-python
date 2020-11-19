@@ -5,6 +5,8 @@ source "$BIN_DIR/utils"
 
 if [ ! "$SKIP_PIP_INSTALL" ]; then
 
+    rm -rf /app/.heroku/miniconda
+
     if [ ! -d /app/.heroku/miniconda ]; then
         puts-step "Preparing Python/Miniconda Environment"
         curl -LO https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh 
