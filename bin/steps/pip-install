@@ -15,10 +15,12 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         rm Miniconda3-latest-Linux-x86_64.sh
         export PATH=$PATH:/app/.heroku/miniconda/bin
         
-        conda install pip --yes | indent
     fi
     
-    conda clean -a
+    conda create --name coins
+    conda activate coins
+    
+    conda install pip --yes | indent
 
     # install faiss
     puts-step "Installing faiss"
