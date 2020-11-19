@@ -17,6 +17,8 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         
         conda install pip --yes | indent
     fi
+    
+    conda clean -a
 
     # install faiss
     puts-step "Installing faiss"
