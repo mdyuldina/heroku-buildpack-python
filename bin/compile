@@ -276,11 +276,11 @@ source "$BIN_DIR/steps/eggpath-fix"
 # This sets up and installs sqlite3 dev headers and the sqlite3 binary but not the
 # libsqlite3-0 library since that exists on the stack image.
 # Note: This only applies to Python 2.7.15+ and Python 3.6.6+
-(( start=$(nowms) ))
+#(( start=$(nowms) ))
 # shellcheck source=bin/steps/sqlite3
-source "$BIN_DIR/steps/sqlite3"
-buildpack_sqlite3_install
-mtime "sqlite3.install.time" "${start}"
+#source "$BIN_DIR/steps/sqlite3"
+#buildpack_sqlite3_install
+#mtime "sqlite3.install.time" "${start}"
 
 # pip install
 # -----------
