@@ -16,6 +16,10 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         conda install pip --yes | indent
     fi
 
+    # install faiss
+    puts-step "Installing faiss"
+    conda install -c pytorch -y faiss-cpu
+    
     # Install dependencies with Pip.
     puts-step "Installing requirements with pip"
 
@@ -80,10 +84,6 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
             /app/.heroku/python/bin/pip install -r "$1/requirements-test.txt" --exists-action=w --src=./.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | cleanup | indent
         fi
     fi
-    
-    # install faiss
-    puts-step "Installing faiss"
-    conda install -c pytorch -y faiss-cpu
     
     # Clean up the installation environment .
     #conda clean -pt --yes > /dev/null
