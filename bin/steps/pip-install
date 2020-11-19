@@ -5,6 +5,17 @@ source "$BIN_DIR/utils"
 
 if [ ! "$SKIP_PIP_INSTALL" ]; then
 
+    if [ ! -d /app/.heroku/miniconda ]; then
+        puts-step "Preparing Python/Miniconda Environment"
+        curl -Os https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+        bash Miniconda-latest-Linux-x86_64.sh  -p /app/.heroku/miniconda/ -b | indent
+        rm -fr Miniconda-latest-Linux-x86_64.sh
+
+        conda install pip --yes | indent
+    fi
+
+    conda install -c pytorch faiss-cpu
+
     # Install dependencies with Pip.
     puts-step "Installing requirements with pip"
 
@@ -69,4 +80,6 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
             /app/.heroku/python/bin/pip install -r "$1/requirements-test.txt" --exists-action=w --src=./.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | cleanup | indent
         fi
     fi
+    # Clean up the installation environment .
+    conda clean -pt --yes > /dev/null
 fi
