@@ -83,8 +83,8 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
     
     # install faiss
     puts-step "Installing faiss"
-    conda install -c pytorch faiss-cpu
+    conda install -c pytorch -y faiss-cpu
     
     # Clean up the installation environment .
-    conda clean -pt --yes > /dev/null
+    #conda clean -pt --yes > /dev/null
 fi
