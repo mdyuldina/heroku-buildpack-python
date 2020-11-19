@@ -17,6 +17,8 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         
     fi
     
+    conda init bash
+    
     conda create --name coins
     conda activate coins
     
