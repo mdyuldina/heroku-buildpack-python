@@ -86,5 +86,5 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
     fi
     
     # Clean up the installation environment .
-    #conda clean -pt --yes > /dev/null
+   conda clean -pt --yes > /dev/null
 fi
